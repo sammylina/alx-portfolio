@@ -10,4 +10,7 @@ export default class Tweet {
 
     @Fields.string()
     value = '';
+
+    @Fields.createdAt()
+    postedAt = new Date();
 }
