@@ -20,8 +20,9 @@ const CreateTweet = ({postTweet}: any) => {
             </div>
             <div className='flex-1 pt-3'>
                 <input 
-                    className='pb-0 px-2 w-full outline-none'
+                    className='pb-0 px-2 w-full outline-none text-md text-gray-500'
                     placeholder="What's happening?"
+                    value={tweetValue}
                     onChange={(e) => setTweetValue(e.target.value)}
                 />             
             </div>

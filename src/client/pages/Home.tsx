@@ -14,7 +14,7 @@ export default function MainView() {
 
     useEffect(() => {
         tweetRepo.find({
-            orderBy: {postedAt: 'asc'}
+            orderBy: {postedAt: 'desc'}
         }).then(setTweets)
     }, [])
 
