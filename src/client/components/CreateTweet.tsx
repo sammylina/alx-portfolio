@@ -1,4 +1,5 @@
-import {FC, FormEvent, useState} from 'react'
+import {FormEvent, useState} from 'react'
+
 
 const CreateTweet = ({postTweet}: any) => {
 
@@ -11,15 +12,25 @@ const CreateTweet = ({postTweet}: any) => {
     }
 
     return (
-        <>
-            <form onSubmit={post}>
+        
+        <div className='p-4 bg-white'>
+            <div className='flex'>
+            <div className='p-2'>
+                <img className='border  rounded-full' src='https://pbs.twimg.com/profile_images/1005827060617695233/XiH6yzF5_normal.jpg'/>
+            </div>
+            <div className='flex-1 pt-3'>
                 <input 
-                    type='text'
+                    className='pb-0 px-2 w-full outline-none'
+                    placeholder="What's happening?"
                     onChange={(e) => setTweetValue(e.target.value)}
-                />
-                <button onClick={post}></button>
-            </form>
-        </>
+                />             
+            </div>
+            </div>
+            <div className='border-b'></div>
+            <div className='flex justify-end pt-3'>
+                <button className='rounded-full px-6 py-1 text-white bg-blue-400' onClick={post}>Tweet</button>
+            </div>
+        </div>
     );
 }
 
