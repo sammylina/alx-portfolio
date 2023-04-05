@@ -1,7 +1,8 @@
-import {Entity, Fields} from 'remult'
+import {Entity, Fields, Allow} from 'remult'
 
 @Entity('tweets', {
-    allowApiCrud: true
+    allowApiCrud: true,
+    //allowApiInsert: Allow.authenticated,
 })
 
 export default class Tweet {

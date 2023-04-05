@@ -2,7 +2,7 @@ import Tweet from '../../shared/Tweet'
 import moment from 'moment'
 
 const TweetBox: React.FC<Tweet> = ({value, postedAt}): JSX.Element =>  {
-    console.log('tweet: ', value)
+    //console.log('tweet: ', value)
     return (
         <div className='flex-col p-2 border-b'>
             <div className='flex items-center'>

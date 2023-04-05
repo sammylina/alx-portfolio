@@ -5,17 +5,29 @@ import TweetBox from "../components/TweetBox";
 import Feed from '../components/Feed'
 import CreateTweet from "../components/CreateTweet";
 import Header from '../components/Header'
+import User from '../../shared/User'
 
 const tweetRepo = remult.repo(Tweet)
 
 export default function MainView() {
 
     const [tweets, setTweets] = useState<Tweet[]>([])
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [currentUser, setCurrentUser] = useState<User>();
 
     useEffect(() => {
         tweetRepo.find({
             orderBy: {postedAt: 'desc'}
         }).then(setTweets)
+        fetch('/api/currentUser').then(async res => {
+            remult.user = await res.json()
+            if (remult.user) {
+                setLoggedIn(true)
+            }
+            console.log("signedin user: ", remult.user)
+        }).catch(err => {
+            console.log("no user logged in")
+        })
     }, [])
 
     const postTweet = async (value: string) => {
@@ -33,7 +45,7 @@ export default function MainView() {
         <div className='bg-grey-50 border-r'>
             <Header/>
             <Feed>
-                <CreateTweet postTweet={postTweet}/>
+                {loggedIn && (<CreateTweet postTweet={postTweet}/>)}
                 <div className='border-b'></div>
                 {
                     tweets.map(({id, value, postedAt}) => {
