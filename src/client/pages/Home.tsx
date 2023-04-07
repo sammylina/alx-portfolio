@@ -34,26 +34,24 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
                 setLoggedIn(true)
                 const currentUser = remult.user.name || 'no currentuser'
                 setCurrentUser(currentUser)
-                console.log("remult.user: ", remult.user)
                 //setCurrentUser(remult.user.name)
             }
             console.log("loggedInUser: ", loggedIn, username)
         }).catch(err => {
-            console.log("no user logged in")
         })
     }, [])
 
     const postTweet = async (value: string) => {
-        const newUser = remult.repo(User).create(remult.user)
+        const newUser = await remult.repo(User).fromJson(remult.user)
         const tweet = {
-            user: newUser,
+            u: newUser,
             value
         }
         try {
             const newTweet = await tweetRepo.insert(tweet);
             setTweets([newTweet, ...tweets])
         }catch(e: any) {
-            console.log('POST_TWEET_ERROR: ', e.message)
+            alert('POST_TWEET_ERROR: ', e.message)
         }
     }
     return (
