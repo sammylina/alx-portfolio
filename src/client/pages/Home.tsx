@@ -51,7 +51,7 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
             const newTweet = await tweetRepo.insert(tweet);
             setTweets([newTweet, ...tweets])
         }catch(e: any) {
-            alert('POST_TWEET_ERROR: ', e.message)
+            alert(e.message)
         }
     }
     return (
