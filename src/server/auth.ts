@@ -29,6 +29,13 @@ auth.post('/api/signin', api.withRemult, async (req, res) => {
     }
 })
 
-auth.post('/api/currentUser', (req, res) => res.json(req.session!['user']))
+auth.post('/api/signout', (req, res) => {
+    req.session!['user'] = null;
+    res.json('signed out successfuly')
+})
+
+auth.get('/api/currentUser', (req, res) => {
+    res.json(req.session!['user'])
+})
 
 export default auth;

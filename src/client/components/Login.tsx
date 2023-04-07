@@ -1,9 +1,13 @@
 import {remult, UserInfo} from 'remult'
 import {FormEvent, useState} from 'react'
-import UserController from '../../shared/UserController'
 
+interface loginProps {
+    onLogin: (user: string) => void;
+    showLogin: boolean,
+    setShowLogin: (show: boolean)  => void,
+}
 
-export default function Login() {
+export default function Login({onLogin, showLogin, setShowLogin}: loginProps) {
 
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
@@ -18,41 +22,64 @@ export default function Login() {
             },
             body: JSON.stringify({name, password})
         })
-        console.log("response came back: ", response)
         if (response.ok) {
             remult.user = await response.json();
-            console.log("remult user: ", remult.user)
+            console.log('login: ', remult.user)
+            const username = remult.user?.name || 'no loggedin user';
+            onLogin(username)
+            // redirect to home page
         }else {
-            console.log(await response.json())
+            alert(await response.json())
         }
         
         setName('')
         setPassword('')
+        setShowLogin(false)
     }
 
     return (
-        <form onSubmit={userLogin}>
-            <div>
-                <h3>Sign in to Twitter</h3>
-            </div>
-            <div>
+    <>
+            <div className="fixed inset-0 z-10 overflow-y-auto">
+                <div
+                    className="fixed inset-0 w-full h-full bg-black opacity-40"
+                    onClick={() => setShowLogin(false)}
+                ></div>
+                <div className="flex items-center min-h-screen px-4 py-8">
+                    <div className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg">
+                        <div className="">
+                            <div className="mt-2 text-center ">
+                                <h4 className="text-lg font-medium text-gray-800">
+                                    SignIn to Twitter
+                                </h4>
+
+        <form onSubmit={userLogin} className='w-full my-4'>
+            <div className='p-2 '>
                 <input placeholder='Name or email'
                        value={name}
                        onChange={(e) => setName(e.target.value)}/>
             </div>
-            <div>
+            <div className='p-2'>
                 <input placeholder='Password'
                        type='password'
                        value={password}
                        onChange={(e) => setPassword(e.target.value)}/>
             </div>
-            <div>
-                <button onClick={userLogin}>Log in</button>
-                <button>Forget password?</button>
+            <div className='p-4'>
+                <button className='bg-blue-400 text-white py-1 mx-2' onClick={userLogin}>Log in</button>
+                <button className='p-0 text-sm text-red-500 border-none'>Forget password?</button>
             </div>
             <div>
                 <p>Don't have an account? <a>Sign up</a></p>
             </div>
         </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
     )
+    
+   // return (
+   // )
 }
