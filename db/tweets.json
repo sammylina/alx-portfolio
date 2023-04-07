@@ -1,0 +1,44 @@
+[
+  {
+    "id": "f98b9bf6-6c50-4867-a706-dfd96245f8a4",
+    "value": "lina is writing",
+    "postedAt": "2023-04-07T16:09:31.174Z",
+    "user": "1654479a-7b8d-44b9-81dd-0489da648307"
+  },
+  {
+    "id": "1a5fc62e-9a3d-4cfb-a7c9-f2ef75f0fc48",
+    "value": "another lina",
+    "postedAt": "2023-04-07T16:09:36.109Z",
+    "user": "1654479a-7b8d-44b9-81dd-0489da648307"
+  },
+  {
+    "id": "94f11d80-5449-4cb5-b8c2-aa44f3533d88",
+    "value": "sammy",
+    "postedAt": "2023-04-07T16:09:44.921Z",
+    "user": "157c8ab7-c387-4109-8c2d-ab3e26deee25"
+  },
+  {
+    "id": "058d82d8-7dd9-4336-81b4-326995d5ba64",
+    "value": "sammy is writing for the second time",
+    "postedAt": "2023-04-07T16:09:59.536Z",
+    "user": "157c8ab7-c387-4109-8c2d-ab3e26deee25"
+  },
+  {
+    "id": "93aa8602-1e99-461c-a7c0-9d4e6511310f",
+    "value": "maria's frist tweet to twitter app",
+    "postedAt": "2023-04-07T16:24:04.233Z",
+    "user": "9bd9af3c-b524-43b6-b5ed-b5413b03a55b"
+  },
+  {
+    "id": "8025ffdb-72a2-424a-b01a-3f39d6960272",
+    "value": "lina is back with new features",
+    "postedAt": "2023-04-07T16:24:26.345Z",
+    "user": "1654479a-7b8d-44b9-81dd-0489da648307"
+  },
+  {
+    "id": "66b1c0ed-ebab-4eb0-af4e-a2a47c9a3f5d",
+    "value": "first tweet of maria",
+    "postedAt": "2023-04-07T17:30:46.151Z",
+    "user": "9bd9af3c-b524-43b6-b5ed-b5413b03a55b"
+  }
+]

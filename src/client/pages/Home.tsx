@@ -46,7 +46,7 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
     const postTweet = async (value: string) => {
         console.log('remult.user: ', remult.user)
         const tweet = {
-            user: remult.user,
+            user: {...remult.user as any},
             value
         }
         try {
