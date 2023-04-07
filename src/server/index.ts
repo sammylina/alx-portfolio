@@ -15,11 +15,15 @@ app.use(
 app.use(auth)
 app.use(api);
 
-app.get('/', (req, res) => {
+app.get('/api/ping', (req, res) => {
     res.json({msg: 'server is listening'})
 })
 
-app.use(express.static(process.cwd()+"/dist"))
+const frontend = process.cwd()+"/dist";
+app.use(express.static(frontend))
+app.get('/*', (_, res) => {
+    res.send(frontend+'/index.html')
+})
 app.listen(process.env['PORT'] || 3200, ()=> {
     console.log("server running on port 3200")
 })
