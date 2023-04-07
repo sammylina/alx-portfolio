@@ -19,5 +19,5 @@ export default class Tweet extends IdEntity{
     postedAt = new Date();
 
     @Field(() => User)
-    user!: User;
+    u!: User;
 }

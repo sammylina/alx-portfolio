@@ -10,6 +10,6 @@ export const api = remultExpress({
        createPostgresConnection({
            connectionString: process.env[
                'DATABASE_URL' 
-           ]
+           ] || 'postgres://sammy:sammy@localhost:5432/alx'
        })
 });

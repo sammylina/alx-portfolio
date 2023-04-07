@@ -63,9 +63,9 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
                 {loggedIn && (<CreateTweet postTweet={postTweet}/>)}
                 <div className='border-b'></div>
                 {
-                    tweets.map(({id, value, postedAt, user}) => {
+                    tweets.map(({id, value, postedAt, u}) => {
 
-                        return <TweetBox key={id} id={id} value={value} user={user}  postedAt={postedAt}/>
+                        return <TweetBox key={id} id={id} value={value} user={u}  postedAt={postedAt}/>
                     })
                 }
             </Feed>
