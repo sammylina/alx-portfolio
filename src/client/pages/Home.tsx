@@ -23,11 +23,11 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
     const [tweets, setTweets] = useState<Tweet[]>([])
 
     useEffect(() => {
-        tweetRepo.find({
-            orderBy: {postedAt: 'desc'}
-        }).then((tweets)  => {
-            setTweets(tweets)
-        })
+       // tweetRepo.find({
+       //     orderBy: {postedAt: 'desc'}
+       // }).then((tweets)  => {
+       //     setTweets(tweets)
+       // })
         fetch('/api/currentUser').then(async res => {
             remult.user = await res.json()
             if (remult.user) {
@@ -39,6 +39,11 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
             console.log("loggedInUser: ", loggedIn, username)
         }).catch(err => {
         })
+        return tweetRepo.liveQuery({
+            orderBy: {postedAt: 'desc'}
+        }).subscribe(info => {
+            setTweets(info.applyChanges)
+        })
     }, [])
 
     const postTweet = async (value: string) => {
@@ -49,7 +54,7 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
         }
         try {
             const newTweet = await tweetRepo.insert(tweet);
-            setTweets([newTweet, ...tweets])
+            //setTweets([newTweet, ...tweets])
         }catch(e: any) {
             alert(e.message)
         }
