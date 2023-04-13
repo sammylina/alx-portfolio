@@ -40,7 +40,7 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
         }).catch(err => {
         })
         return tweetRepo.liveQuery({
-            orderBy: {postedAt: 'desc'}
+            orderBy: {postedAt: 'asc'}
         }).subscribe(info => {
             setTweets(info.applyChanges)
         })
