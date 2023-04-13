@@ -40,12 +40,9 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
         }).catch(err => {
         })
         return tweetRepo.liveQuery({
-            orderBy: {postedAt: 'asc'}
+            orderBy: {postedAt: 'desc'}
         }).subscribe(info => {
-            console.log("before change: ", tweets)
-            const updatedTweets = info.applyChanges(tweets)
-            console.log("after change: ", updatedTweets)
-            setTweets(updatedTweets)
+            setTweets(info.applyChanges)
         })
     }, [])
 
