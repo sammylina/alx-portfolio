@@ -1,4 +1,4 @@
-import {remult, UserInfo} from 'remult'
+import {remult} from 'remult'
 import {FormEvent, useState} from 'react'
 
 interface loginProps {
@@ -7,7 +7,7 @@ interface loginProps {
     setShowLogin: (show: boolean)  => void,
 }
 
-export default function Login({onLogin, showLogin, setShowLogin}: loginProps) {
+export default function Login({onLogin, setShowLogin}: loginProps) {
 
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
@@ -24,10 +24,8 @@ export default function Login({onLogin, showLogin, setShowLogin}: loginProps) {
         })
         if (response.ok) {
             remult.user = await response.json();
-            console.log('login: ', remult.user)
-            const username = remult.user?.name || 'no loggedin user';
+            const username = remult.user?.name || '';
             onLogin(username)
-            // redirect to home page
         }else {
             alert(await response.json())
         }

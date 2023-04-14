@@ -23,22 +23,20 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
     const [tweets, setTweets] = useState<Tweet[]>([])
 
     useEffect(() => {
-       // tweetRepo.find({
-       //     orderBy: {postedAt: 'desc'}
-       // }).then((tweets)  => {
-       //     setTweets(tweets)
-       // })
         fetch('/api/currentUser').then(async res => {
             remult.user = await res.json()
             if (remult.user) {
                 setLoggedIn(true)
-                const currentUser = remult.user.name || 'no currentuser'
+                const currentUser = remult.user.name || '';
                 setCurrentUser(currentUser)
-                //setCurrentUser(remult.user.name)
             }
-            console.log("loggedInUser: ", loggedIn, username)
+            setLoggedIn(false)
+            setCurrentUser('')
+
         }).catch(err => {
+            alert(err.message)
         })
+
         return tweetRepo.liveQuery({
             orderBy: {postedAt: 'desc'}
         }).subscribe(info => {
@@ -49,12 +47,11 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
     const postTweet = async (value: string) => {
         const newUser = await remult.repo(User).fromJson(remult.user)
         const tweet = {
-            u: newUser,
+            usr: newUser,
             value
         }
         try {
-            const newTweet = await tweetRepo.insert(tweet);
-            //setTweets([newTweet, ...tweets])
+            await tweetRepo.insert(tweet);
         }catch(e: any) {
             alert(e.message)
         }
@@ -66,9 +63,9 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
                 {loggedIn && (<CreateTweet postTweet={postTweet}/>)}
                 <div className='border-b'></div>
                 {
-                    tweets.map(({id, value, postedAt, u}) => {
+                    tweets.map(({id, value, postedAt, usr}) => {
 
-                        return <TweetBox key={id} id={id} value={value} user={u}  postedAt={postedAt}/>
+                        return <TweetBox key={id} id={id} value={value} user={usr}  postedAt={postedAt}/>
                     })
                 }
             </Feed>

@@ -10,7 +10,7 @@ interface authProps{
     showRegisterDialog: (show: boolean) => void;
 }
 
-const Header: React.FC<authProps> = ({username, loggedIn, setLoggedIn, setCurrentUser, showLoginDialog, showRegisterDialog}): JSX.Element => {
+const Header: React.FC<authProps> = ({loggedIn, setLoggedIn, setCurrentUser, showLoginDialog, showRegisterDialog}): JSX.Element => {
     const signout = () => {
         fetch('/api/signout', {
             method: 'POST',

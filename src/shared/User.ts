@@ -23,10 +23,3 @@ export default class User extends IdEntity{
     })
     password = '';
 }
-
-//declare module 'remult' {
-//    export interface UserInfo {
-//        email: string,
-//        password: string
-//    }
-//}

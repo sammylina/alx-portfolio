@@ -5,7 +5,7 @@ import Login from './components/Login'
 
 export default function App() {
     
-    const [currentUser, setCurrentUser] = useState('no user ');
+    const [currentUser, setCurrentUser] = useState('');
     const [loggedIn, setLoggedIn] = useState(false)
     const [showLogin, setShowLogin] = useState(false)
     const [showRegister, setShowRegister] = useState(false)

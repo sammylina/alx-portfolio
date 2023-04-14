@@ -1,6 +1,4 @@
-import Tweet from '../../shared/Tweet'
 import moment from 'moment'
-import {remult} from 'remult'
 import User from '../../shared/User'
 
 interface Tweetbox {

@@ -6,10 +6,8 @@ import User from '../shared/User'
 export const api = remultExpress({
     entities: [Tweet, User],
     getUser: req => req.session!['user'],
-   dataProvider: 
+    dataProvider: 
        createPostgresConnection({
-           connectionString: process.env[
-               'DATABASE_URL' 
-           ] || 'postgres://sammy:sammy@localhost:5432/alx'
+           connectionString: process.env['DATABASE_URL'] || 'postgres://sammy:sammy@localhost:5432/alx'
        })
 });
