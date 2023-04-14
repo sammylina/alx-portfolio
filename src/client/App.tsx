@@ -12,14 +12,14 @@ export default function App() {
 
     return (
         <div className=' pl-96'>
-            {/* Side bar */}
+            {/* Login dialog box */}
             <div className="border-r bg-white">
                 {showLogin && (<Login showLogin={showLogin} setShowLogin={(show) => setShowLogin(show)} onLogin={(user: string) => {
                     setCurrentUser(user)
                     setLoggedIn(true)
                 }}/>)}
             </div>
-            {/* Feed */}
+            {/* Main application(always avaialble)*/}
             <MainView username={currentUser} 
                       loggedIn={loggedIn} 
                       setLoggedIn={(loggedIn) => setLoggedIn(loggedIn)}
@@ -27,7 +27,7 @@ export default function App() {
                       setShowLogin={(show) => setShowLogin(show)}
                       setShowRegister={(show) => setShowRegister(show)}
                 />
-            {/* Follow and Trends */}
+            {/* Register dialog box */}
             <div className='py-4 pl-10 pr-28 bg-white'>
                 {showRegister && (<Register setShowRegister={(show) => setShowRegister(show)}/>) }
             </div>

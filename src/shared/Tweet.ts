@@ -1,9 +1,9 @@
-import {Entity, Fields, Allow, Validators, IdEntity, Field} from 'remult'
+import {Entity, Fields, Validators, IdEntity, Field} from 'remult'
 import User from './User';
+
 
 @Entity('tweets', {
     allowApiCrud: true,
-    //allowApiInsert: Allow.authenticated,
 })
 
 export default class Tweet extends IdEntity{
@@ -19,5 +19,5 @@ export default class Tweet extends IdEntity{
     postedAt = new Date();
 
     @Field(() => User)
-    usr!: User;
+    usr!: User;/**one to many relation */
 }

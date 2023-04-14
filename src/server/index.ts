@@ -15,15 +15,18 @@ app.use(
 app.use(auth)
 app.use(api);
 
+// check if the server is alive
 app.get('/api/ping', (req, res) => {
     res.json({msg: 'server is listening'})
 })
 
+// serve front end from the same server
 const frontend = process.cwd()+"/dist";
 app.use(express.static(frontend))
 app.get('/*', (_, res) => {
     res.send(frontend+'/index.html')
 })
+
 app.listen(process.env['PORT'] || 3200, ()=> {
     console.log("server running on port 3200")
 })

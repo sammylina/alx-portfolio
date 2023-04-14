@@ -1,13 +1,14 @@
 import {FormEvent, useState} from 'react'
 
 
+// Create your tweet here
 const CreateTweet = ({postTweet}: any) => {
 
-    const [tweetValue, setTweetValue] = useState('')
+    const [tweetMsg, setTweetValue] = useState('')
 
     const post = (e: FormEvent) => {
         e.preventDefault();
-        postTweet(tweetValue)
+        postTweet(tweetMsg)
         setTweetValue('');
     }
 
@@ -22,7 +23,7 @@ const CreateTweet = ({postTweet}: any) => {
                 <input 
                     className='pb-0 px-2 w-full outline-none text-md text-gray-500'
                     placeholder="What's happening?"
-                    value={tweetValue}
+                    value={tweetMsg}
                     onChange={(e) => setTweetValue(e.target.value)}
                 />             
             </div>

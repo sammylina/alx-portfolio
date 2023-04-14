@@ -2,6 +2,7 @@ import {FormEvent, useState} from 'react'
 import User from '../../shared/User'
 import {remult} from 'remult'
 
+// Remult User object
 const userRepo = remult.repo(User)
 
 interface registerProp {

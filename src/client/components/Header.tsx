@@ -11,10 +11,12 @@ interface authProps{
 }
 
 const Header: React.FC<authProps> = ({loggedIn, setLoggedIn, setCurrentUser, showLoginDialog, showRegisterDialog}): JSX.Element => {
+
     const signout = () => {
         fetch('/api/signout', {
             method: 'POST',
         });
+        // when the user signed out remove logged in user from frontend
         remult.user = undefined;
         setLoggedIn(false)
         setCurrentUser('')

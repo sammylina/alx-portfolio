@@ -23,6 +23,7 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
     const [tweets, setTweets] = useState<Tweet[]>([])
 
     useEffect(() => {
+        // check if there is loggedin user initialy
         fetch('/api/currentUser').then(async res => {
             remult.user = await res.json()
             if (remult.user) {
@@ -37,6 +38,7 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
             alert(err.message)
         })
 
+        // Update the tweets with out reloading
         return tweetRepo.liveQuery({
             orderBy: {postedAt: 'desc'}
         }).subscribe(info => {
@@ -45,6 +47,8 @@ export default function MainView({username, loggedIn, setShowLogin, setShowRegis
     }, [])
 
     const postTweet = async (value: string) => {
+
+        // conver session user to Remult User object
         const newUser = await remult.repo(User).fromJson(remult.user)
         const tweet = {
             usr: newUser,

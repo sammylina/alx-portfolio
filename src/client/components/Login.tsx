@@ -7,6 +7,7 @@ interface loginProps {
     setShowLogin: (show: boolean)  => void,
 }
 
+// Login Dialog Component
 export default function Login({onLogin, setShowLogin}: loginProps) {
 
     const [name, setName] = useState('')
@@ -23,6 +24,7 @@ export default function Login({onLogin, setShowLogin}: loginProps) {
             body: JSON.stringify({name, password})
         })
         if (response.ok) {
+            // save the logged in user in frontend for later use
             remult.user = await response.json();
             const username = remult.user?.name || '';
             onLogin(username)

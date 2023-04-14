@@ -3,6 +3,7 @@ import Tweet from '../shared/Tweet';
 import {createPostgresConnection} from 'remult/postgres'
 import User from '../shared/User'
 
+// remult-express middleware
 export const api = remultExpress({
     entities: [Tweet, User],
     getUser: req => req.session!['user'],

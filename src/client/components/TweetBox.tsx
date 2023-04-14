@@ -8,7 +8,7 @@ interface Tweetbox {
     id: string,
 
 }
-
+// Display a tweet
 const TweetBox: React.FC<Tweetbox> = ({value, postedAt, user}): JSX.Element =>  {
     //console.log('tweet: ', value)
     return (
