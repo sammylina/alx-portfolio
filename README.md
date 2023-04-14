@@ -3,6 +3,7 @@
 This project is done for ALX software engineering foundation program completion.
 
 The application very basic implementation of twitter that users can share ideas with others. It has authentication and authorization features to enable appropriate access of data. implementation uses a CRUD framework called Remult to validate object schemas and use the same object in both back and front end.
+[Author Linkedin](https://www.linkedin.com/in/samuel-hailu-1347371b0)
 
 ![](https://github.com/sammylina/alx-portfolio/tree/main/public/user_home.png)
 ![](https://github.com/sammylina/alx-portfolio/tree/main/public/app_home.png)
