@@ -14,7 +14,7 @@ You need [Node](https://nodejs.org/en) and [PostgreSQL](https://www.postgresql.o
 
 ### Installation
  ```
- git clone https://github.com/sammylina
+ git clone https://github.com/sammylina/alx-portfolio.git
  npm install
  ```
 
